@@ -60,7 +60,7 @@ pred_array = np.zeros(
     (params.x_span.size, params.v_span.size, params.thetad_span.size,
      params.theta_span.size, params.a_span.size, 4))
 
-
+# Iterate over states and actions
 i0 = 0
 for s0 in params.x_span:
     print(i0)
@@ -73,6 +73,7 @@ for s0 in params.x_span:
             for s3 in params.theta_span:
                 i4 = 0
                 for s4 in params.a_span:
+                    # Find index of nearest neighbour of prediction and store it
                     s = np.array((s0, s1, s2, s3))
                     s.shape = (4, 1)
                     i_pred = nearest_neighbour(lin_pred(s, s4, params), params)
